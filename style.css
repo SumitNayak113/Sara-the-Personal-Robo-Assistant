@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden; /* Ensures no scrollbars appear */
+    position: relative;
+}
+
+/* Background Video */
+#bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Ensures the video covers the entire screen */
+    z-index: -1; /* Sends the video behind other content */
+}
+
+/* Content */
+.content {
+    text-align: center;
+    color: aliceblue;
+    z-index: 1;
+    position: relative;
+    padding: 20px;
+    max-width: 90%; /* Ensures content doesn't overflow on small screens */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center content */
+    align-items: center; /* Horizontally center content */
+    height: 100%; /* Makes the content container fill the screen */
+}
+
+/* Logo Styling */
+#logo {
+    width: 20vw;
+    opacity: 0.9;
+    animation: float 3s ease-in-out infinite, glow 1.5s infinite alternate;
+    filter: drop-shadow(0 0 10px rgba(14, 19, 19, 0.8));
+}
+
+/* Floating Effect */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Glowing Text Effect */
+@keyframes glowText {
+    0% {
+        text-shadow: 0px 0px 5px rgba(212, 43, 122, 0.5), 0px 0px 10px rgba(201, 41, 116, 0.5);
+    }
+    100% {
+        text-shadow: 0px 0px 15px rgba(212, 43, 122, 0.9), 0px 0px 20px rgba(201, 41, 116, 0.9);
+    }
+}
+
+h1 {
+    font-family: "Protest Guerrilla", sans-serif;
+    font-size: 3vw;
+    animation: fadeIn 2s ease-in-out, glowText 2s infinite alternate;
+}
+
+/* Animated Fade-in Effect */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Make "SARA" bounce */
+#name {
+    color: rgb(212, 43, 122);
+    font-size: 30px;
+    display: inline-block;
+    animation: bounce 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes bounce {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.2); }
+}
+
+/* Make "Personal Assistant" color cycle */
+#va {
+    color: aqua;
+    font-size: 30px;
+    animation: colorChange 3s infinite alternate ease-in-out;
+}
+
+@keyframes colorChange {
+    0% { color: aqua; }
+    100% { color: rgb(255, 105, 180); }
+}
+
+#voice {
+    width: 220px;
+    display: none;
+}
+
+/* Button Styling */
+#btn {
+    width: 50%;
+    max-width: 300px;
+    background: linear-gradient(to right, rgb(21, 145, 207), rgb(201, 41, 116));
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 20px;
+    border-radius: 20px;
+    color: white;
+    box-shadow: 0px 0px 10px rgba(21, 145, 207, 0.7), 0px 0px 10px rgba(201, 41, 116, 0.7);
+    border: none;
+    transition: all 0.4s ease-in-out;
+    cursor: pointer;
+    animation: pulse 2s infinite alternate;
+    margin-top: 20px; /* Adds some spacing between button and text */
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0px 0px 10px rgba(21, 145, 207, 0.7), 0px 0px 10px rgba(201, 41, 116, 0.7);
+    }
+    100% {
+        box-shadow: 0px 0px 20px rgba(21, 145, 207, 1), 0px 0px 20px rgba(201, 41, 116, 1);
+    }
+}
+
+#btn:hover {
+    box-shadow: 0px 0px 20px rgba(21, 145, 207, 1), 0px 0px 20px rgba(201, 41, 116, 1);
+    transform: scale(1.05);
+    letter-spacing: 2px;
+}
+
+#btn:active {
+    transform: scale(0.95);
+}
+
+/* Responsive Text Sizes */
+@media (max-width: 768px) {
+    h1 {
+        font-size: clamp(20px, 4vw, 32px);
+    }
+
+    #logo {
+        width: 30vw;
+        max-width: 120px;
+    }
+
+    #btn {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: clamp(16px, 5vw, 28px);
+    }
+
+    #logo {
+        width: 35vw;
+        max-width: 100px;
+    }
+
+    #btn {
+        font-size: 14px;
+        padding: 8px;
+        width: 80%;
+    }
+
+    #btn img {
+        width: 18px;
+        height: 18px;
+    }
+}
